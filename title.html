@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Title - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>📚 BookHub</h1>
+    <p>Book Title Management</p>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">Book Title Details</h2>
+
+    <div class="card">
+
+        <h3>Manage Book Title</h3>
+
+        <form id="titleForm">
+            <label>Enter Book Title:</label>
+            <br><br>
+
+            <input type="text" id="bookTitle"
+                   placeholder="Enter Book Title" required>
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="message"></p>
+
+        <br>
+
+        <a href="../index.html">Back to Home</a>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("titleForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let title = document.getElementById("bookTitle").value;
+
+        document.getElementById("message").innerText =
+            "Book Title entered successfully: " + title;
+
+    });
+</script>
+
+</body>
+</html>

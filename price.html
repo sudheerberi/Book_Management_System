@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Price - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>📚 BookHub</h1>
+    <p>Book Price Management</p>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">Price Details</h2>
+
+    <div class="card">
+
+        <h3>Manage Book Price</h3>
+
+        <form id="priceForm">
+
+            <label>Enter Book Price (₹):</label>
+            <br><br>
+
+            <input type="number" id="bookPrice"
+                   placeholder="Enter Price" min="0.01"
+                   step="0.01" required>
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <br>
+
+        <a href="../index.html">Back to Home</a>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("priceForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let price = document.getElementById("bookPrice").value;
+
+        document.getElementById("message").innerText =
+            "Book Price entered successfully: ₹" + price;
+
+    });
+</script>
+
+</body>
+</html>

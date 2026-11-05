@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book ID - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>📚 BookHub</h1>
+    <p>Book ID Management</p>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">Book ID Details</h2>
+
+    <div class="card">
+        <h3>Book Identification</h3>
+
+        <form id="bookForm">
+            <p>Enter Book ID:</p>
+            <br>
+
+            <input type="text" id="bookId"
+                   placeholder="Enter Book ID" required>
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="message"></p>
+
+        <br>
+        <a href="../index.html">Back to Home</a>
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("bookForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let id = document.getElementById("bookId").value;
+
+        document.getElementById("message").innerText =
+            "Book ID entered successfully: " + id;
+    });
+</script>
+
+</body>
+</html>

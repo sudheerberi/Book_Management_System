@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Category - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>📚 BookHub</h1>
+    <p>Book Category Management</p>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">Category Details</h2>
+
+    <div class="card">
+
+        <h3>Manage Book Category</h3>
+
+        <form id="categoryForm">
+
+            <label>Select Book Category:</label>
+            <br><br>
+
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="Programming">Programming</option>
+                <option value="Science">Science</option>
+                <option value="Technology">Technology</option>
+                <option value="Fiction">Fiction</option>
+                <option value="History">History</option>
+                <option value="Education">Education</option>
+            </select>
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <br>
+
+        <a href="../index.html">Back to Home</a>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("categoryForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let category = document.getElementById("category").value;
+
+        document.getElementById("message").innerText =
+            "Category selected successfully: " + category;
+
+    });
+</script>
+
+</body>
+</html>

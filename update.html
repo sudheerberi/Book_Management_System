@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Book - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>📚 BookHub</h1>
+    <p>Update Book Details</p>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">Update Book Information</h2>
+
+    <div class="card">
+
+        <form id="updateForm">
+
+            <label>Enter Book ID:</label><br><br>
+            <input type="text" id="bookId" placeholder="Enter Book ID" required>
+            <br><br>
+
+            <label>New Book Title:</label><br><br>
+            <input type="text" id="title" placeholder="Enter New Title" required>
+            <br><br>
+
+            <label>New Author:</label><br><br>
+            <input type="text" id="author" placeholder="Enter New Author" required>
+            <br><br>
+
+            <label>New Category:</label><br><br>
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option>Programming</option>
+                <option>Science</option>
+                <option>Technology</option>
+                <option>Fiction</option>
+                <option>History</option>
+                <option>Education</option>
+            </select>
+            <br><br>
+
+            <label>New Price (₹):</label><br><br>
+            <input type="number" id="price" min="0.01" step="0.01" required>
+            <br><br>
+
+            <label>New Stock:</label><br><br>
+            <input type="number" id="stock" min="0" step="1" required>
+            <br><br>
+
+            <button type="submit">Update Book</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <br>
+        <a href="../index.html">Back to Home</a>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("updateForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let id = document.getElementById("bookId").value.trim();
+
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+
+    let index = books.findIndex(book => book.id === id);
+
+    if (index === -1) {
+        document.getElementById("message").innerText =
+            "Book ID not found!";
+        return;
+    }
+
+    books[index] = {
+        id: id,
+        title: document.getElementById("title").value.trim(),
+        author: document.getElementById("author").value.trim(),
+        category: document.getElementById("category").value,
+        price: Number(document.getElementById("price").value),
+        stock: Number(document.getElementById("stock").value)
+    };
+
+    localStorage.setItem("books", JSON.stringify(books));
+
+    document.getElementById("message").innerText =
+        "Book updated successfully!";
+
+    document.getElementById("updateForm").reset();
+
+});
+
+</script>
+
+</body>
+</html>

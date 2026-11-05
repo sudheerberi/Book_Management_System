@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Book - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Search Book</h1>
+        <p>Find book details using Book ID</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Search Book Details</h2>
+
+            <form id="searchForm">
+                <label>Enter Book ID:</label>
+                <input type="text" id="bookId" placeholder="Enter Book ID" required>
+
+                <button type="submit">Search Book</button>
+            </form>
+
+            <div id="result"></div>
+
+            <br>
+            <a href="../index.html">Back to Home</a>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let id = document.getElementById("bookId").value;
+            let books = JSON.parse(localStorage.getItem("books")) || [];
+
+            let book = books.find(book => book.id === id);
+
+            if (book) {
+                document.getElementById("result").innerHTML =
+                    "<h3>Book Found!</h3>" +
+                    "<p>Book ID: " + book.id + "</p>" +
+                    "<p>Title: " + book.title + "</p>" +
+                    "<p>Author: " + book.author + "</p>" +
+                    "<p>Category: " + book.category + "</p>" +
+                    "<p>Price: " + book.price + "</p>" +
+                    "<p>Stock: " + book.stock + "</p>";
+            } else {
+                document.getElementById("result").innerHTML =
+                    "<p>Book ID not found!</p>";
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Book List</h1>
+        <p>View all available books</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>All Books</h2>
+
+            <table border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+
+                <tbody id="bookTable"></tbody>
+            </table>
+
+            <p id="message"></p>
+
+            <br>
+            <a href="../index.html">Back to Home</a>
+        </section>
+    </main>
+
+    <script>
+        let books = JSON.parse(localStorage.getItem("books")) || [];
+
+        let table = document.getElementById("bookTable");
+        let message = document.getElementById("message");
+
+        if (books.length === 0) {
+            message.innerText = "No books available!";
+        } else {
+            books.forEach(function(book) {
+                let row = table.insertRow();
+
+                row.insertCell(0).innerText = book.id;
+                row.insertCell(1).innerText = book.title;
+                row.insertCell(2).innerText = book.author;
+                row.insertCell(3).innerText = book.category;
+                row.insertCell(4).innerText = book.price;
+                row.insertCell(5).innerText = book.stock;
+            });
+        }
+    </script>
+
+</body>
+</html>

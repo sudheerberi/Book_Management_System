@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insert Multiple Books - BookHub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Insert Multiple Books</h1>
+        <p>Add multiple books to the library</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Enter Book Details</h2>
+
+            <p>Enter one book per line in this format:</p>
+            <p>B101,Java Programming,James,Programming,500,20</p>
+
+            <form id="insertListForm">
+                <label>Book Details:</label>
+                <textarea id="bookData" rows="8" placeholder="B101,Java Programming,James,Programming,500,20&#10;B102,Python Basics,John,Programming,400,15" required></textarea>
+
+                <button type="submit">Insert Books</button>
+            </form>
+
+            <p id="message"></p>
+
+            <a href="../index.html">Back to Home</a>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById("insertListForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let lines = document.getElementById("bookData").value.trim().split("\n");
+            let books = JSON.parse(localStorage.getItem("books")) || [];
+
+            let added = 0;
+
+            lines.forEach(function(line) {
+                let values = line.split(",").map(value => value.trim());
+
+                if (values.length === 6 && values.every(value => value !== "")) {
+                    let [id, title, author, category, price, stock] = values;
+
+                    if (!books.some(book => book.id === id)) {
+                        books.push({id, title, author, category, price, stock});
+                        added++;
+                    }
+                }
+            });
+
+            localStorage.setItem("books", JSON.stringify(books));
+
+            document.getElementById("message").innerText =
+                added + " book(s) inserted successfully!";
+
+            document.getElementById("insertListForm").reset();
+        });
+    </script>
+
+</body>
+</html>
