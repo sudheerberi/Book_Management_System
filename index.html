@@ -1,59 +1,107 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Search Book - BookHub</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHub - Book Management System</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Search Book</h1>
-        <p>Find book details using Book ID</p>
-    </header>
+<header>
+    <h1>📚 BookHub</h1>
+    <p>Book Management System</p>
+</header>
 
-    <main class="container">
-        <section class="card">
-            <h2>Search Book Details</h2>
+<div class="container">
 
-            <form id="searchForm">
-                <label>Enter Book ID:</label>
-                <input type="text" id="bookId" placeholder="Enter Book ID" required>
+    <h2 class="section-title">Book Attributes</h2>
 
-                <button type="submit">Search Book</button>
-            </form>
+    <div class="cards">
 
-            <div id="result"></div>
+        <div class="card">
+            <h3>Book ID</h3>
+            <p>Manage Book Identification</p>
+            <a href="pages/book-id.html">Explore</a>
+        </div>
 
-            <br>
-            <a href="../index.html">Back to Home</a>
-        </section>
-    </main>
+        <div class="card">
+            <h3>Title</h3>
+            <p>Manage Book Titles</p>
+            <a href="pages/title.html">Explore</a>
+        </div>
 
-    <script>
-        document.getElementById("searchForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+        <div class="card">
+            <h3>Author</h3>
+            <p>Manage Book Authors</p>
+            <a href="pages/author.html">Explore</a>
+        </div>
 
-            let id = document.getElementById("bookId").value;
-            let books = JSON.parse(localStorage.getItem("books")) || [];
+        <div class="card">
+            <h3>Category</h3>
+            <p>Manage Book Categories</p>
+            <a href="pages/category.html">Explore</a>
+        </div>
 
-            let book = books.find(book => book.id === id);
+        <div class="card">
+            <h3>Price</h3>
+            <p>Manage Book Prices</p>
+            <a href="pages/price.html">Explore</a>
+        </div>
 
-            if (book) {
-                document.getElementById("result").innerHTML =
-                    "<h3>Book Found!</h3>" +
-                    "<p>Book ID: " + book.id + "</p>" +
-                    "<p>Title: " + book.title + "</p>" +
-                    "<p>Author: " + book.author + "</p>" +
-                    "<p>Category: " + book.category + "</p>" +
-                    "<p>Price: " + book.price + "</p>" +
-                    "<p>Stock: " + book.stock + "</p>";
-            } else {
-                document.getElementById("result").innerHTML =
-                    "<p>Book ID not found!</p>";
-            }
-        });
-    </script>
+        <div class="card">
+            <h3>Stock</h3>
+            <p>Manage Available Stock</p>
+            <a href="pages/stock.html">Explore</a>
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <h2 class="section-title">Book Operations</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Insert Book</h3>
+            <a href="pages/insert.html">Insert</a>
+        </div>
+
+        <div class="card">
+            <h3>Update Book</h3>
+            <a href="pages/update.html">Update</a>
+        </div>
+
+        <div class="card">
+            <h3>Delete Book</h3>
+            <a href="pages/delete.html">Delete</a>
+        </div>
+
+        <div class="card">
+            <h3>Index</h3>
+            <a href="pages/index.html">Search</a>
+        </div>
+
+        <div class="card">
+            <h3>Insert List</h3>
+            <a href="pages/insert-list.html">Insert List</a>
+        </div>
+
+        <div class="card">
+            <h3>Book List</h3>
+            <a href="pages/list.html">View List</a>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 BookHub | Book Management System</p>
+</footer>
 
 </body>
 </html>
+
